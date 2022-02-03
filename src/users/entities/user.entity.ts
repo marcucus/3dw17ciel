@@ -1,21 +1,21 @@
-import { Entity, Column, PrimaryGeneratedColumn, EntityRepository, Repository, ObjectID, ObjectIdColumn,} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, EntityRepository, Repository, ObjectID, ObjectIdColumn} from 'typeorm';
 
 @Entity()
 export class Users {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column()
-  firstname: string;
+  @PrimaryGeneratedColumn()
+  userId: number;
+
+  @Column({ nullable: true })
+  url: string;
 
   @Column()
-  lastname: string;
-
-  @Column({ unique: true })
-  public email: string;
+  public title: string;
  
-  @Column()
-  public password: string;
+  @Column({ nullable: true })
+  public description: string;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
   createdAt: Date;

@@ -1,10 +1,9 @@
 import {ObjectID} from 'typeorm';
 export class CreateUserDto {
-    _id: ObjectID;
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
+    userId: number;
+    url: string;
+    title: string;
+    description: string;
     createdAt: Date;
     updatedAt: Date;
 }

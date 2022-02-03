@@ -4,33 +4,27 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import {ObjectID} from 'typeorm';
 
-@Controller('api')
+@Controller('whishlist')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('createuser')
+  @Post('create')
   createUser(@Body() createUserDto: CreateUserDto) {
     return this.usersService.createUser(createUserDto);
   }
 
-  @Get('users')
+  @Get('all')
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get('user/:id')
-  findOne(@Param('id') _id: ObjectID) {
-      return this.usersService.findOne(_id);
+  @Get('one/:id')
+  findOne(@Param('id') userId: number) {
+      return this.usersService.findOne(userId);
   }
 
-
-  @Put('updateuser')
-  update(@Body('id') _id: ObjectID, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(_id, updateUserDto);
-  }
-
-  @Delete('deleteuser')
-  remove(@Body('id') _id: ObjectID) {
-    return this.usersService.remove(_id);
+  @Delete('delete')
+  remove(@Body('id') userId: number) {
+    return this.usersService.remove(userId);
   }
 }
